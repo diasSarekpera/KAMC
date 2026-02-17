@@ -1,0 +1,507 @@
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+    --blue-main: #0c2347;
+    --blue-deep: #071a36;
+
+    --gold-main: #d4af37;
+    --gold-light: #f2d67c;
+
+    --white-soft: #f4f7ff;
+}
+
+
+/* =====================================================
+   HERO SECTION
+===================================================== */
+
+.hero{
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    color: var(--white-soft);
+    overflow: hidden;
+
+    background: url("../../../assets/images/bg.png") center/cover no-repeat;
+}
+
+/* Overlay sombre premium */
+.hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background: linear-gradient(
+        110deg,
+        rgba(7,26,54,0.85) 10%,
+        rgba(7,26,54,0.65) 40%,
+        rgba(7,26,54,0.25) 70%
+    );
+}
+
+.hero > *{
+    position: relative;
+    z-index: 2;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.header{
+    position: relative;
+
+    background: rgba(7, 26, 54, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+/* Ligne lumineuse */
+.header::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #60a5fa,
+        #93c5fd,
+        transparent
+    );
+
+    
+    filter: blur(1px);
+}
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo a{
+    font-family: "Cinzel", serif;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav-list a{
+    font-family: "Inter", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    color: rgba(255,255,255,0.75);
+    position: relative;
+
+    transition: color 0.2s ease;
+}
+
+.nav-list a::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+
+    width: 0%;
+    height: 2px;
+
+    background: linear-gradient(90deg,#60a5fa,#3b82f6);
+    transform: translateX(-50%);
+    transition: width 0.35s ease;
+}
+
+.nav-list a:hover{
+    color: white;
+}
+
+.nav-list a:hover::after{
+    width: 50%;
+}
+
+.nav-list a.active{
+    color: white;
+}
+
+
+/* =====================================================
+   SOCIAL ICONS
+===================================================== */
+
+.social-links a{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
+
+    transition: transform 0.25s ease,
+                border-color 0.25s ease,
+                color 0.25s ease;
+}
+
+.social-links a:hover{
+    border-color: rgba(96,165,250,0.6);
+    color: #60a5fa;
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   HERO TEXT
+===================================================== */
+
+.hero-slogan{
+    font-family: "Inter", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+
+    color: var(--gold-light);
+    opacity: 0.85;
+}
+
+.hero-title{
+    font-family: "Cinzel", serif;
+    font-size: clamp(2.8rem, 4vw, 4.4rem);
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -1px;
+
+    color: white;
+
+    text-shadow:
+        0 4px 15px rgba(0,0,0,0.35),
+        0 1px 0 rgba(255,255,255,0.05);
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.btn{
+    font-family: "Inter", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-radius: 6px;
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                color 0.2s ease,
+                background 0.3s ease;
+}
+
+/* Outline */
+
+.btn-outline{
+    border: 1px solid rgba(255,255,255,0.6);
+    color: white;
+}
+
+.btn-outline:hover{
+    border-color: #60a5fa;
+    color: #60a5fa;
+}
+
+/* Primary */
+
+.btn-primary{
+    position: relative;
+    overflow: hidden;
+
+    background: var(--gold-main);
+    color: #0c2347;
+}
+
+.btn-primary:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212,175,55,0.5);
+}
+
+/* Shine effect */
+
+.btn-primary::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+
+    transition: 0.6s;
+}
+
+.btn-primary:hover::after{
+    left: 100%;
+}
+
+
+/* =====================================================
+   HERO IMAGE
+===================================================== */
+
+.hero-image{
+    position: relative;
+}
+
+/* Glow optimisé (moins lourd que 80px) */
+.hero-image::after{
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+
+    background: radial-gradient(
+        circle,
+        rgba(59,130,246,0.35),
+        transparent 70%
+    );
+
+    filter: blur(45px);
+    z-index: -1;
+}
+
+.hero-image img{
+    width: 380px;
+
+    filter: drop-shadow(0 60px 80px rgba(0,0,0,0.6));
+
+    animation: heroFloat 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    will-change: transform;
+
+    transition: transform 0.3s ease;
+}
+
+.hero-image img:hover{
+    transform: scale(1.05);
+}
+
+@keyframes heroFloat{
+    0%   { transform: translateY(0px) rotateY(0deg); }
+    50%  { transform: translateY(-20px) rotateY(6deg); }
+    100% { transform: translateY(0px) rotateY(0deg); }
+}
+
+/* =====================================================
+   HERO SLIDER BACKGROUND PER SLIDE
+===================================================== */
+/* Animation légère au changement */
+.hero-slide:not(.active){
+    transform: scale(1.05);
+}
+
+.hero-slide.active{
+    transform: scale(1);
+}
+
+
+
+/* =====================================================
+   SLIDE CONTENT ANIMATIONS
+===================================================== */
+
+/* État initial (inactif) */
+.hero-slide .hero-content,
+.hero-slide .hero-image{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s cubic-bezier(.77,0,.18,1);
+}
+
+/* Quand actif */
+.hero-slide.active .hero-content,
+.hero-slide.active .hero-image{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Décalage subtil image */
+.hero-slide.active .hero-image{
+    transition-delay: 0.15s;
+}
+
+/* =====================================================
+   SMOOTH FADE BETWEEN SLIDES
+===================================================== */
+/* ===============================
+   SLIDE DIRECTIONAL SYSTEM
+=============================== */
+
+.hero-slides{
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+}
+
+.hero-slide{
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    transition: transform 0.8s cubic-bezier(.77,0,.18,1),
+                opacity 0.6s ease;
+
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+/* Slide active */
+.hero-slide.active{
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+
+/* Slide sortant vers gauche */
+.hero-slide.exit-left{
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Slide entrant depuis gauche */
+.hero-slide.enter-left{
+    transform: translateX(-100%);
+}
+
+
+/* =====================================================
+   TEXT MICRO ANIMATION
+===================================================== */
+
+.hero-slide.active .hero-slogan{
+    animation: sloganFade 1s ease forwards;
+}
+
+.hero-slide.active .hero-title{
+    animation: titleFade 1.1s ease forwards;
+}
+
+@keyframes sloganFade{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 0.85;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleFade{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   PREMIUM DOTS
+===================================================== */
+
+.hero-dots{
+    position: absolute;
+    bottom: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 14px;
+    z-index: 50;
+}
+
+.dot{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+
+    background: rgba(255,255,255,0.35);
+    transition: background 0.3s ease,
+                transform 0.3s ease;
+}
+
+/* Hover subtil */
+.dot:hover{
+    background: rgba(255,255,255,0.6);
+}
+
+/* Dot actif */
+.dot.active{
+    background: white;
+}
+
+/* Pulse subtil */
+.dot.active::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    animation: dotPulse 2.4s ease-out infinite;
+}
+
+/* Animation premium */
+@keyframes dotPulse{
+    0%{
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    70%{
+        transform: scale(2.6);
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+

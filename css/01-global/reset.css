@@ -1,0 +1,96 @@
+/* ===============================
+   RESET.CSS
+   Objectif : repartir sur une base neutre
+================================= */
+
+/* 1. Box sizing universel */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* Performance smooth */
+
+*{
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+a, button{
+    cursor: pointer;
+}
+
+/* 2. Suppression des marges par défaut sur le body */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3. Images et médias responsives */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 4. Héritage des polices sur les inputs et boutons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 5. Boutons et liens sans styles intrusifs */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 6. Suppression du style des listes */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 7. Suppression des guillemets automatiques sur blockquote/q */
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+  content: none;
+}
+
+/* 8. Tables : pas d'espacements parasites */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
