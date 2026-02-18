@@ -3,32 +3,37 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>KAMC – Équipement sportif</title>
+        <meta name="description" content="KAMC – Vente d’équipement sportif premium conçu pour la performance.">
+        <title>KAMC – Équipement Sportif Premium</title>
 
+        <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <!-- Google Font Cinzel -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <!-- Font Awesome (icônes réseaux sociaux) -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer">
+
+        <!-- Main CSS -->
         <link rel="stylesheet" href="./css/02-home/main.css">
     </head>
     <body>
+
         <!-- ================= HERO SECTION ================= -->
-        <section class="hero">
+        <section class="hero" aria-label="Section principale">
 
             <!-- ================= HEADER ================= -->
-            <header class="header">
+            <header class="header" role="banner">
                 <div class="header-container">
 
+                    <!-- Logo -->
                     <div class="logo">
-                        <a href="#">KAMC</a>
+                        <a href="/" aria-label="Accueil KAMC">KAMC</a>
                     </div>
 
-                    <nav class="nav">
+                    <!-- Navigation desktop -->
+                    <nav class="nav" aria-label="Navigation principale">
                         <ul class="nav-list">
                             <li><a href="#" class="active">Accueil</a></li>
                             <li><a href="#">Produits</a></li>
@@ -37,108 +42,147 @@
                         </ul>
                     </nav>
 
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <!-- Social links -->
+                    <div class="social-links" aria-label="Réseaux sociaux">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
                     </div>
+
+                    <!-- Burger button -->
+                    <button class="burger" aria-label="Ouvrir le menu mobile" aria-expanded="false" aria-controls="mobile-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
 
                 </div>
             </header>
 
+            <!-- ================= MOBILE MENU ================= -->
+            <nav id="mobile-menu" class="mobile-menu" aria-label="Navigation mobile">
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Produits</a></li>
+                    <li><a href="#">Marque</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
 
-            <!-- ================= HERO SLIDES WRAPPER ================= -->
+                <div class="mobile-social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </nav>
+
+            <!-- ================= HERO SLIDES ================= -->
             <div class="hero-slides">
 
-                <!-- ================= SLIDE 1 (active by default) ================= -->
-                <div class="hero-slide active">
+                <!-- SLIDE 1 -->
+                <div class="hero-slide active" role="group" aria-roledescription="slide" aria-label="1 sur 3">
 
                     <div class="hero-container">
 
                         <div class="hero-content">
-                            <span class="hero-slogan">Urban Sport Shop</span>
-                            <h1 class="hero-title">Vente d'équipement sportif</h1>
+                            <span class="hero-slogan">Pensé pour performer</span>
+
+                            <h1 class="hero-title">
+                                <span class="title-main">Équipement Sportif</span>
+                                <span class="title-accent">Premium</span>
+                            </h1>
 
                             <div class="hero-buttons">
-                                <a href="#" class="btn btn-outline">Découvrir</a>
-                                <a href="#" class="btn btn-primary">Commander</a>
+                                <a href="#" class="btn btn-outline">Voir la collection</a>
+                                <a href="#" class="btn btn-primary">Acheter maintenant</a>
                             </div>
                         </div>
 
                         <div class="hero-image">
-                            <img src="./assets/images/mockups/mck1.png" alt="">
+                            <img 
+                                src="./assets/images/mockups/mck1.png" 
+                                alt="Chaussure sportive premium KAMC"
+                                loading="lazy"
+                                width="520"
+                                height="520">
                         </div>
 
                     </div>
-
                 </div>
 
-
-                <!-- ================= SLIDE 2 ================= -->
-                <div class="hero-slide">
+                <!-- SLIDE 2 -->
+                <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 sur 3">
 
                     <div class="hero-container">
 
                         <div class="hero-content">
-                            <span class="hero-slogan">Performance & Style</span>
-                            <h1 class="hero-title">Conçus pour l'Excellence</h1>
+                            <span class="hero-slogan">Plus vite. Plus fort. Plus loin.</span>
+
+                            <h2 class="hero-title">
+                                <span class="title-main">Performance Sans</span>
+                                <span class="title-accent">Limite</span>
+                            </h2>
 
                             <div class="hero-buttons">
-                                <a href="#" class="btn btn-outline">Explorer</a>
+                                <a href="#" class="btn btn-outline">Voir les produits</a>
                                 <a href="#" class="btn btn-primary">Acheter</a>
                             </div>
                         </div>
 
                         <div class="hero-image">
-                            <img src="./assets/images/mockups/mck2.png" alt="">
+                            <img 
+                                src="./assets/images/mockups/mck2.png" 
+                                alt="Chaussure performance KAMC"
+                                loading="lazy"
+                                width="520"
+                                height="520">
                         </div>
 
                     </div>
-
                 </div>
 
-
-                <!-- ================= SLIDE 3 ================= -->
-                <div class="hero-slide">
+                <!-- SLIDE 3 -->
+                <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 sur 3">
 
                     <div class="hero-container">
 
                         <div class="hero-content">
-                            <span class="hero-slogan">Nouvelle Collection</span>
-                            <h1 class="hero-title">Équipez-vous comme un Pro</h1>
+                            <span class="hero-slogan">Disponible maintenant</span>
+
+                            <h2 class="hero-title">
+                                <span class="title-main">Nouvelle Collection</span>
+                                <span class="title-accent">Exclusive</span>
+                            </h2>
 
                             <div class="hero-buttons">
-                                <a href="#" class="btn btn-outline">Découvrir</a>
+                                <a href="#" class="btn btn-outline">Voir la collection</a>
                                 <a href="#" class="btn btn-primary">Commander</a>
                             </div>
                         </div>
 
                         <div class="hero-image">
-                            <img src="./assets/images/mockups/mck3.png" alt="">
+                            <img 
+                                src="./assets/images/mockups/mck3.png" 
+                                alt="Nouvelle collection sportive KAMC"
+                                loading="lazy"
+                                width="520"
+                                height="520">
                         </div>
 
                     </div>
-
                 </div>
 
             </div>
 
-
             <!-- ================= SLIDER DOTS ================= -->
-            <div class="hero-dots">
-                <button class="dot active" data-slide="0"></button>
-                <button class="dot" data-slide="1"></button>
-                <button class="dot" data-slide="2"></button>
+            <div class="hero-dots" role="tablist" aria-label="Navigation des slides">
+                <button class="dot active" data-slide="0" role="tab" aria-selected="true"></button>
+                <button class="dot" data-slide="1" role="tab" aria-selected="false"></button>
+                <button class="dot" data-slide="2" role="tab" aria-selected="false"></button>
             </div>
 
         </section>
 
         <script src="./js/02-home/hero/hero-slider.js"></script>
+
     </body>
 </html>
-
-
-
-
-
-

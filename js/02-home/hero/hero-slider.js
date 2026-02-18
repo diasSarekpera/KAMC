@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
             nextSlide.classList.add("enter-left");
         }
 
+        // Force reflow to restart CSS animations cleanly
+        void nextSlide.offsetWidth;
+
         nextSlide.classList.add("active");
 
         dots[currentIndex].classList.remove("active");

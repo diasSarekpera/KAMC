@@ -1,8 +1,8 @@
 /* =====================================================
-   ROOT VARIABLES (STRUCTURE ONLY)
+   ROOT VARIABLES
 ===================================================== */
 
-:root{
+:root {
     --max-width: 1200px;
     --padding-inline: 1.5rem;
 }
@@ -12,7 +12,7 @@
    GLOBAL CONTAINER SYSTEM
 ===================================================== */
 
-.container{
+.container {
     width: 100%;
     max-width: var(--max-width);
     margin-inline: auto;
@@ -21,179 +21,10 @@
 
 
 /* =====================================================
-   HERO STRUCTURE
-   (La hauteur est gérée dans design.css)
+   HERO GLOBAL STRUCTURE
 ===================================================== */
 
-.hero{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-
-/* =====================================================
-   HEADER LAYOUT
-===================================================== */
-
-.header{
-    width: 100%;
-}
-
-.header-container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    min-height: 80px;
-    flex-shrink: 0;
-
-    width: 100%;
-    max-width: var(--max-width);
-    margin-inline: auto;
-    padding-inline: var(--padding-inline);
-}
-
-
-/* =====================================================
-   NAVIGATION LAYOUT
-===================================================== */
-
-.nav-list{
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-
-/* =====================================================
-   SOCIAL LINKS LAYOUT
-===================================================== */
-
-.social-links{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-
-/* =====================================================
-   MOBILE MENU STRUCTURE
-===================================================== */
-
-.mobile-menu{
-    display: none; /* activé en JS */
-
-    width: 100%;
-    padding: 2rem 0;
-
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-
-/* =====================================================
-   HERO MAIN CONTAINER
-===================================================== */
-
-.hero-container{
-    flex: 1;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.7rem;
-
-    width: 100%;
-    max-width: var(--max-width);
-    margin-inline: auto;
-    padding-inline: var(--padding-inline);
-}
-
-
-/* =====================================================
-   HERO CONTENT STRUCTURE
-===================================================== */
-
-.hero-content{
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    gap: 2rem;
-}
-
-
-/* =====================================================
-   HERO BUTTONS LAYOUT
-===================================================== */
-
-.hero-buttons{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.btn{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 12px 26px;
-}
-
-
-/* =====================================================
-   HERO IMAGE STRUCTURE
-===================================================== */
-
-.hero-image{
-    flex: 1;
-    max-width: 550px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    perspective: 1000px;
-}
-
-.hero-image img{
-    max-width: 100%;
-    height: auto;
-}
-
-
-/* =====================================================
-   ROOT VARIABLES (STRUCTURE ONLY)
-===================================================== */
-
-:root{
-    --max-width: 1200px;
-    --padding-inline: 1.5rem;
-}
-
-
-/* =====================================================
-   GLOBAL CONTAINER SYSTEM
-===================================================== */
-
-.container{
-    width: 100%;
-    max-width: var(--max-width);
-    margin-inline: auto;
-    padding-inline: var(--padding-inline);
-}
-
-
-/* =====================================================
-   HERO STRUCTURE
-===================================================== */
-
-.hero{
+.hero {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -206,12 +37,15 @@
    HEADER LAYOUT
 ===================================================== */
 
-.header{
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    z-index: 5;
+    z-index: 50;
 }
 
-.header-container{
+.header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -227,20 +61,49 @@
 
 
 /* =====================================================
-   HERO SLIDES WRAPPER
+   NAVIGATION & SOCIAL
 ===================================================== */
 
-.hero-slides{
-    position: relative;
-    flex: 1;
+.nav-list,
+.social-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    gap: 2rem;
+}
+
+.social-links {
+    gap: 1rem;
 }
 
 
 /* =====================================================
-   INDIVIDUAL SLIDE STRUCTURE
+   MOBILE MENU
 ===================================================== */
 
-.hero-slide{
+.mobile-menu {
+    display: none; /* activé en JS */
+    width: 100%;
+    padding: 2rem 0;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+/* =====================================================
+   HERO SLIDES SYSTEM
+===================================================== */
+
+.hero-slides {
+    position: relative;
+    flex: 1;
+}
+
+.hero-slide {
     position: absolute;
     inset: 0;
 
@@ -254,10 +117,7 @@
     pointer-events: none;
 }
 
-
-/* Slide active */
-
-.hero-slide.active{
+.hero-slide.active {
     position: relative;
     opacity: 1;
     pointer-events: auto;
@@ -269,7 +129,7 @@
    HERO MAIN CONTAINER
 ===================================================== */
 
-.hero-container{
+.hero-container {
     width: 100%;
     max-width: var(--max-width);
     margin-inline: auto;
@@ -283,11 +143,11 @@
 
 
 /* =====================================================
-   HERO CONTENT STRUCTURE
+   HERO CONTENT
 ===================================================== */
 
-.hero-content{
-    flex: 1;
+.hero-content {
+    flex: 0 0 60%;
 
     display: flex;
     flex-direction: column;
@@ -296,45 +156,55 @@
     gap: 2rem;
 }
 
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.title-main {
+    font-size: 3.2rem;
+    font-weight: 600;
+}
+
+.title-accent {
+    font-size: 2.8rem;
+    font-weight: 400;
+    align-self: flex-start;
+}
+
 
 /* =====================================================
-   HERO BUTTONS LAYOUT
+   HERO BUTTONS
 ===================================================== */
 
-.hero-buttons{
+.hero-buttons {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.btn{
+.btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     padding: 12px 26px;
 }
 
 
 /* =====================================================
-   HERO IMAGE STRUCTURE
+   HERO IMAGE
 ===================================================== */
 
-.hero-image{
-    flex: 1;
-    max-width: 550px;
-
+.hero-image {
+    flex: 0 0 40%;
     display: flex;
     align-items: center;
     justify-content: center;
-
     perspective: 1000px;
 }
 
-.hero-image img{
-    max-width: 100%;
+.hero-image img {
+    width: clamp(420px, 35vw, 520px);
     height: auto;
 }
-
-
-
