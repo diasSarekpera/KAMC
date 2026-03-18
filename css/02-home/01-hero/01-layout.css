@@ -560,6 +560,58 @@
     }
 }
 
+/* =========================================
+   HERO IMAGE FINAL FIX (NO OVERFLOW)
+========================================= */
 
+@media (max-width: 768px){
+
+    /* IMAGE CONTAINER */
+    .hero-image{
+        flex: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        max-height: 35%; /* 🔥 limite verticale */
+    }
+
+    /* IMAGE ULTRA OPTIMISÉE */
+    .hero-image img{
+        width: clamp(140px, 42vw, 190px); /* 🔥 plus petit */
+        max-height: 180px;               /* 🔥 empêche débordement */
+        object-fit: contain;
+    }
+
+    /* AJUSTEMENT GLOBAL POUR ÉQUILIBRE */
+    .hero-container{
+        padding: 75px 15px 65px; /* header + dots bien gérés */
+        gap: 0.6rem;
+    }
+
+    .hero-content{
+        gap: 0.5rem;
+    }
+
+    /* TITRES ENCORE LÉGÈREMENT RÉDUITS */
+    .title-main{
+        font-size: 1.6rem;
+    }
+
+    .title-accent{
+        font-size: 1.3rem;
+    }
+
+    /* BOUTONS PLUS COMPACTS */
+    .btn{
+        padding: 7px 12px;
+        font-size: 0.7rem;
+    }
+
+    /* DOTS FIXES */
+    .hero-dots{
+        bottom: 8px;
+    }
+}
 
 
