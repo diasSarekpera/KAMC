@@ -24,7 +24,7 @@
     flex-direction: column;
     color: var(--white-soft);
     overflow: hidden;
-    background: url("../../../assets/images/bg1.png") center / cover no-repeat;
+    background: url("../../../assets/images/background.png") center / cover no-repeat;
 }
 
 .hero::before {
@@ -426,3 +426,6 @@
         opacity: 0;
     }
 }
+
+
+
