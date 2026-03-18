@@ -1,161 +1,6 @@
-
 /* =====================================================
-   TABLET RESPONSIVE
+   LARGE TABLET (≤1100px)
 ===================================================== */
-
-@media (max-width: 1024px) {
-
-    .hero-container{
-        gap: 2rem;
-    }
-
-    .hero-content{
-        flex: 0 0 55%;
-    }
-
-    .hero-image{
-        flex: 0 0 45%;
-    }
-
-    .title-main{
-        font-size: 2.7rem;
-    }
-
-    .title-accent{
-        font-size: 2.3rem;
-    }
-
-    .hero-image img{
-        width: clamp(320px, 40vw, 420px);
-    }
-
-}
-
-
-/* =====================================================
-   SMALL TABLET
-===================================================== */
-
-@media (max-width: 820px) {
-
-    .nav{
-        display: none;
-    }
-
-    .social-links{
-        display: none;
-    }
-
-    .burger{
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        background: none;
-        border: none;
-    }
-
-    .burger span{
-        width: 26px;
-        height: 3px;
-        background: currentColor;
-        display: block;
-    }
-
-}
-
-
-/* =====================================================
-   MOBILE HERO LAYOUT
-===================================================== */
-
-@media (max-width: 768px) {
-
-    .hero-container{
-
-        flex-direction: column;
-        text-align: center;
-
-        justify-content: center;
-
-        padding-top: 10px;
-        padding-bottom: 10px;
-
-        gap: 3rem;
-    }
-
-    .hero-content{
-        flex: none;
-        align-items: center;
-    }
-
-    .hero-title{
-        align-items: center;
-    }
-
-    .title-main{
-        font-size: 2.3rem;
-    }
-
-    .title-accent{
-        font-size: 2rem;
-        align-self: center;
-    }
-
-    .hero-buttons{
-        flex-direction: column;
-        width: 100%;
-        max-width: 260px;
-    }
-
-    .btn{
-        width: 100%;
-    }
-
-    .hero-image{
-        flex: none;
-    }
-
-    .hero-image img{
-        width: clamp(260px, 70vw, 360px);
-    }
-
-}
-
-
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-
-@media (max-width: 480px) {
-
-    .title-main{
-        font-size: 2rem;
-    }
-
-    .title-accent{
-        font-size: 1.7rem;
-    }
-
-    .hero-slogan{
-        font-size: 0.9rem;
-    }
-
-    .hero-container{
-        gap: 2.2rem;
-    }
-
-    .hero-image img{
-        width: 80vw;
-    }
-
-}
-
-
-/* =====================================================
-   LARGE TABLET
-===================================================== */
-
 @media (max-width: 1100px){
 
     .hero-container{
@@ -173,14 +18,35 @@
     .hero-image img{
         width: 340px;
     }
-
 }
 
 
 /* =====================================================
-   TABLET
+   TABLET (≤1024px)
 ===================================================== */
+@media (max-width: 1024px){
 
+    .hero-container{
+        gap: 2rem;
+    }
+
+    .title-main{
+        font-size: 2.7rem;
+    }
+
+    .title-accent{
+        font-size: 2.3rem;
+    }
+
+    .hero-image img{
+        width: clamp(320px, 40vw, 420px);
+    }
+}
+
+
+/* =====================================================
+   SMALL TABLET (≤900px)
+===================================================== */
 @media (max-width: 900px){
 
     .title-main{
@@ -194,20 +60,15 @@
     .hero-image img{
         width: 300px;
     }
-
 }
 
 
 /* =====================================================
-   SMALL TABLET / MENU SWITCH
+   MENU SWITCH (≤820px)
 ===================================================== */
-
 @media (max-width: 820px){
 
-    .nav{
-        display: none;
-    }
-
+    .nav,
     .social-links{
         display: none;
     }
@@ -227,27 +88,25 @@
         background: white;
         display: block;
     }
-
 }
 
 
 /* =====================================================
-   MOBILE HERO STRUCTURE
+   MOBILE (≤768px)
 ===================================================== */
-
 @media (max-width: 768px){
 
     .hero-container{
-
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
 
-        justify-content: center;
-
+        /*
         padding-top: 120px;
         padding-bottom: 60px;
 
-        gap: 2.8rem;
+        gap: 2.8rem;*/
     }
 
     .hero-content{
@@ -274,12 +133,9 @@
     }
 
     .hero-buttons{
-
         flex-direction: column;
-
         width: 100%;
         max-width: 260px;
-
         gap: 12px;
     }
 
@@ -289,6 +145,7 @@
 
     .hero-image{
         flex: none;
+        margin-bottom: 40px;
     }
 
     .hero-image img{
@@ -302,13 +159,15 @@
         filter: blur(35px);
     }
 
+    .hero-dots{
+        bottom: 30px;
+    }
 }
 
 
 /* =====================================================
-   SMALL MOBILE
+   SMALL MOBILE (≤520px)
 ===================================================== */
-
 @media (max-width: 520px){
 
     .header-container{
@@ -335,20 +194,54 @@
     .hero-image img{
         width: 210px;
     }
-
 }
 
 
 /* =====================================================
-   VERY SMALL MOBILE
+   VERY SMALL MOBILE (≤480px)
 ===================================================== */
+@media (max-width: 480px){
+/*
+    .hero-container{
+        gap: 2.2rem;
+        padding-top: 140px;
+    }*/
 
+    .title-main{
+        font-size: 2rem;
+    }
+
+    .title-accent{
+        font-size: 1.7rem;
+    }
+
+    .hero-slogan{
+        font-size: 0.9rem;
+    }
+
+    .hero-image img{
+        width: 80vw;
+    }
+
+    .hero-image{
+        margin-bottom: 50px;
+    }
+
+    .hero-dots{
+        bottom: 24px;
+    }
+}
+
+
+/* =====================================================
+   ULTRA SMALL (≤400px)
+===================================================== */
 @media (max-width: 400px){
-
+/*
     .hero-container{
         gap: 2rem;
         padding-bottom: 50px;
-    }
+    }*/
 
     .title-main{
         font-size: 1.7rem;
@@ -361,61 +254,4 @@
     .hero-image img{
         width: 180px;
     }
-
-    .hero-dots{
-        bottom: 24px;
-    }
-
 }
-
-/* =====================================================
-   MOBILE SPACING IMPROVEMENT
-   espace haut + espace bas hero
-===================================================== */
-
-@media (max-width: 768px){
-
-    /* espace entre header et slogan */
-
-    .hero-container{
-        padding-top: 140px;
-    }
-
-    /* espace entre produit et dots */
-
-    .hero-image{
-        margin-bottom: 40px;
-    }
-
-    /* position des dots ajustée */
-
-    .hero-dots{
-        bottom: 30px;
-    }
-
-}
-
-
-/* =====================================================
-   SMALL MOBILE SPACING
-===================================================== */
-
-@media (max-width: 480px){
-
-    .hero-container{
-        padding-top: 150px;
-    }
-
-    .hero-image{
-        margin-bottom: 50px;
-    }
-
-    .hero-dots{
-        bottom: 24px;
-    }
-
-}
-
-
-
-
