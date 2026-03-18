@@ -92,68 +92,97 @@
 
 
 /* =====================================================
-   MOBILE (≤768px)
+   MOBILE GLOBAL (≤768px)
 ===================================================== */
 @media (max-width: 768px){
+
+    /* HERO STRUCTURE */
+
+    .hero{
+        height: 100svh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow: hidden;
+    }
 
     .hero-container{
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
+
+        padding-inline: clamp(1rem, 4vw, 1.6rem);
+
+        gap: clamp(1.5rem, 4vh, 2.2rem);
     }
+
+    /* CONTENT */
 
     .hero-content{
         flex: none;
         align-items: center;
         max-width: 520px;
+        gap: 1rem;
     }
 
     .hero-title{
         align-items: center;
     }
 
+    .hero-slogan{
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+    }
+
     .title-main{
-        font-size: 2.2rem;
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
     }
 
     .title-accent{
-        font-size: 1.9rem;
+        font-size: clamp(1.5rem, 4.5vw, 1.9rem);
         align-self: center;
     }
 
-    .hero-slogan{
-        letter-spacing: 4px;
-    }
+    /* BUTTONS */
 
     .hero-buttons{
         flex-direction: column;
         width: 100%;
-        max-width: 260px;
-        gap: 12px;
+        max-width: 220px;
+        gap: 10px;
     }
 
     .btn{
         width: 100%;
     }
 
+    /* IMAGE */
+
     .hero-image{
         flex: none;
     }
 
     .hero-image img{
-        width: 240px;
+        width: clamp(180px, 55vw, 240px);
         animation-duration: 7s;
     }
 
     .hero-image::after{
-        width: 260px;
-        height: 260px;
-        filter: blur(35px);
+        width: 220px;
+        height: 220px;
+        filter: blur(30px);
     }
 
+    /* DOTS */
+
+    /* DOTS FIX MOBILE */
     .hero-dots{
-        bottom: 30px;
+        position: absolute;
+        bottom: 16px; /* ajuste ici */
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
@@ -184,55 +213,40 @@
         letter-spacing: 3px;
     }
 
-    .hero-image img{
-        width: 210px;
-    }
-}
-
-
-/* =====================================================
-   VERY SMALL MOBILE (≤480px)
-===================================================== */
-@media (max-width: 480px){
-    .title-main{
-        font-size: 2rem;
-    }
-
-    .title-accent{
-        font-size: 1.7rem;
-    }
-
-    .hero-slogan{
-        font-size: 0.9rem;
+    .hero-container{
+        gap: 1.5rem;
     }
 
     .hero-image img{
-        width: 80vw;
+        width: clamp(160px, 60vw, 200px);
     }
 
     .hero-dots{
-        bottom: 24px;
+        bottom: 10px;
     }
 }
 
 
 /* =====================================================
-   ULTRA SMALL (≤400px)
+   VERY SMALL MOBILE (≤400px)
 ===================================================== */
 @media (max-width: 400px){
 
+    .hero-container{
+        gap: 1.3rem;
+    }
+
     .title-main{
-        font-size: 1.7rem;
+        font-size: 1.6rem;
     }
 
     .title-accent{
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .hero-image img{
-        width: 180px;
+        width: 150px;
     }
 }
-
 
 
