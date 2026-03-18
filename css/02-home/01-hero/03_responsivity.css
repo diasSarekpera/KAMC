@@ -101,12 +101,6 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-
-        /*
-        padding-top: 120px;
-        padding-bottom: 60px;
-
-        gap: 2.8rem;*/
     }
 
     .hero-content{
@@ -145,7 +139,6 @@
 
     .hero-image{
         flex: none;
-        margin-bottom: 40px;
     }
 
     .hero-image img{
@@ -201,12 +194,6 @@
    VERY SMALL MOBILE (≤480px)
 ===================================================== */
 @media (max-width: 480px){
-/*
-    .hero-container{
-        gap: 2.2rem;
-        padding-top: 140px;
-    }*/
-
     .title-main{
         font-size: 2rem;
     }
@@ -223,10 +210,6 @@
         width: 80vw;
     }
 
-    .hero-image{
-        margin-bottom: 50px;
-    }
-
     .hero-dots{
         bottom: 24px;
     }
@@ -237,11 +220,6 @@
    ULTRA SMALL (≤400px)
 ===================================================== */
 @media (max-width: 400px){
-/*
-    .hero-container{
-        gap: 2rem;
-        padding-bottom: 50px;
-    }*/
 
     .title-main{
         font-size: 1.7rem;
@@ -255,3 +233,6 @@
         width: 180px;
     }
 }
+
+
+
