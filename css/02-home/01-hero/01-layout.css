@@ -629,3 +629,24 @@
 
 }
 
+/* =====================================================
+   MOBILE FIX : slogan + spacing
+===================================================== */
+
+@media (max-width: 768px){
+
+    /* 1. Cacher le slogan */
+    .hero-slogan{
+        display: none;
+    }
+
+    /* 2. Réduire l’espace entre texte et image */
+    .hero-container{
+        gap: 1.8rem; /* avant ~2.8rem */
+    }
+
+}
+
+.hero-content{
+    gap: 1.2rem;
+}
