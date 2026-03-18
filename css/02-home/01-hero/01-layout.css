@@ -25,12 +25,9 @@
 ===================================================== */
 
 .hero {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    position: relative;
-    overflow: hidden; 
-    min-height: 100vh;
+    height: 100svh;
 }
  
 /* =====================================================
@@ -38,7 +35,7 @@
 ===================================================== */
 
 .header {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -102,8 +99,8 @@
 ===================================================== */
 
 .hero-slides {
-    position: relative;
     flex: 1;
+    display: flex;
 }
 
 .hero-slide {
@@ -434,184 +431,4 @@
         bottom: 12px;
     }
 }
-
-
-/* =========================================
-   HERO FIX FINAL (NO GAP TOP + PERFECT FIT)
-========================================= */
-
-@media (max-width: 768px){
-
-    /* 1. HERO prend exactement l’écran */
-    .hero{
-        height: 100svh;
-        min-height: unset;
-    }
-
-    /* 2. Structure pleine hauteur */
-    .hero-slides,
-    .hero-slide{
-        height: 100%;
-    }
-
-    /* 3. Container clean (SUPPRESSION DU GROS GAP) */
-    .hero-container{
-        height: 100%;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /* 🔥 clé ici */
-
-        padding-top: 0;          /* ❌ supprime le faux espace */
-        padding-bottom: 40px;    /* espace pour les dots */
-
-        gap: 1.2rem;
-    }
-
-    /* 4. Contenu plus compact */
-    .hero-content{
-        gap: 0.8rem;
-    }
-
-    /* 5. Image mieux équilibrée */
-    .hero-image img{
-        width: clamp(180px, 55vw, 260px);
-    }
-
-    /* 6. Dots toujours visibles */
-    .hero-dots{
-        bottom: 12px;
-    }
-}
-
-/* =========================================
-   HERO MOBILE PERFECT FIT (NO SCROLL)
-========================================= */
-
-@media (max-width: 768px){
-
-    /* 1. HERO = écran exact */
-    .hero{
-        height: 100svh;
-        overflow: hidden;
-    }
-
-    .hero-slides,
-    .hero-slide{
-        height: 100%;
-    }
-
-    /* 2. CONTAINER OPTIMISÉ */
-    .hero-container{
-        height: 100%;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        text-align: center;
-
-        padding: 80px 15px 70px; /* 🔥 espace header + dots */
-
-        gap: 0.8rem;
-    }
-
-    /* 3. CONTENU ULTRA COMPACT */
-    .hero-content{
-        gap: 0.6rem;
-    }
-
-    .hero-slogan{
-        font-size: 0.65rem;
-        letter-spacing: 2px;
-    }
-
-    .title-main{
-        font-size: 1.7rem;
-    }
-
-    .title-accent{
-        font-size: 1.4rem;
-    }
-
-    /* 4. BOUTONS COMPACT */
-    .hero-buttons{
-        gap: 8px;
-        max-width: 220px;
-    }
-
-    .btn{
-        padding: 8px 14px;
-        font-size: 0.75rem;
-    }
-
-    /* 5. IMAGE ADAPTATIVE (clé du problème) */
-    .hero-image img{
-        width: clamp(160px, 50vw, 220px);
-    }
-
-    /* 6. DOTS FIXES (toujours visibles) */
-    .hero-dots{
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-}
-
-/* =========================================
-   HERO IMAGE FINAL FIX (NO OVERFLOW)
-========================================= */
-
-@media (max-width: 768px){
-
-    /* IMAGE CONTAINER */
-    .hero-image{
-        flex: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        max-height: 35%; /* 🔥 limite verticale */
-    }
-
-    /* IMAGE ULTRA OPTIMISÉE */
-    .hero-image img{
-        width: clamp(140px, 42vw, 190px); /* 🔥 plus petit */
-        max-height: 180px;               /* 🔥 empêche débordement */
-        object-fit: contain;
-    }
-
-    /* AJUSTEMENT GLOBAL POUR ÉQUILIBRE */
-    .hero-container{
-        padding: 75px 15px 65px; /* header + dots bien gérés */
-        gap: 0.6rem;
-    }
-
-    .hero-content{
-        gap: 0.5rem;
-    }
-
-    /* TITRES ENCORE LÉGÈREMENT RÉDUITS */
-    .title-main{
-        font-size: 1.6rem;
-    }
-
-    .title-accent{
-        font-size: 1.3rem;
-    }
-
-    /* BOUTONS PLUS COMPACTS */
-    .btn{
-        padding: 7px 12px;
-        font-size: 0.7rem;
-    }
-
-    /* DOTS FIXES */
-    .hero-dots{
-        bottom: 8px;
-    }
-}
-
 
