@@ -1,0 +1,150 @@
+/* =====================================================
+   RESPONSIVE HERO FINAL MOBILE
+===================================================== */
+
+/* Mobile global adjustments */
+@media (max-width: 768px) {
+    .hero {
+        height: 100vh;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 1rem;
+        overflow: hidden;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        gap: 2rem;
+        padding-top: 100px;
+        padding-bottom: 40px;
+        max-width: 90%;
+        margin-inline: auto;
+    }
+
+    .hero-content {
+        flex: none;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .hero-slogan {
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+    }
+
+    .hero-title {
+        font-size: 1.9rem;
+        line-height: 1.1;
+    }
+
+    .title-main {
+        font-size: 1.9rem;
+    }
+
+    .title-accent {
+        font-size: 1.6rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .hero-image {
+        flex: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    .hero-image img {
+        width: 180px;
+        max-width: 60vw;
+        height: auto;
+        animation-duration: 6s;
+    }
+
+    .hero-image::after {
+        width: 200px;
+        height: 200px;
+        filter: blur(30px);
+    }
+
+    .hero-dots {
+        bottom: 20px;
+    }
+}
+
+/* Very small mobile (≤400px) */
+@media (max-width: 400px) {
+    .hero-container {
+        padding-top: 90px;
+        gap: 1.5rem;
+    }
+
+    .title-main {
+        font-size: 1.6rem;
+    }
+
+    .title-accent {
+        font-size: 1.3rem;
+    }
+
+    .hero-slogan {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-image img {
+        width: 140px;
+    }
+
+    .hero-dots {
+        bottom: 16px;
+    }
+}
+
+/* Ensure burger menu and mobile nav are accessible */
+@media (max-width: 820px) {
+    .nav {
+        display: none !important;
+    }
+    .social-links {
+        display: none !important;
+    }
+    .burger {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+/* Hero slides adjustments */
+@media (max-width: 768px) {
+    .hero-slide {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+}
+
+
+
