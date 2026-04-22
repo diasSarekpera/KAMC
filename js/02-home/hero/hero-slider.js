@@ -1,166 +1,324 @@
+/**
+ * hero-slider.js — KAMC Hero Section
+ * ─────────────────────────────────────────────────────
+ * Fonctionnalités :
+ *  - Carousel directionnel (gauche / droite)
+ *  - Autoplay avec pause au hover
+ *  - Navigation par dots
+ *  - Progress bar mobile (indicateur d'autoplay)
+ *  - Swipe tactile (mobile)
+ *  - Navigation clavier (← →)
+ *  - Menu mobile slider latéral (slide-in depuis la droite)
+ *  - Fermeture du menu : bouton ×, overlay, touche Escape, liens
+ *  - Gestion de l'accessibilité (aria-*, focus trap, body scroll lock)
+ * ─────────────────────────────────────────────────────
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ===============================
-       ELEMENTS
-    =============================== */
+    /* ═══════════════════════════════════════════════
+       1. SÉLECTION DES ÉLÉMENTS
+    ═══════════════════════════════════════════════ */
 
-    const slides      = document.querySelectorAll(".hero-slide");
-    const dots        = document.querySelectorAll(".dot");
-    const slider      = document.querySelector(".hero-slides");
-    const burger      = document.querySelector(".burger");
-    const mobileMenu  = document.getElementById("mobile-menu");
+    // Slider
+    const slides        = document.querySelectorAll(".hero-slide");
+    const dots          = document.querySelectorAll(".dot");
+    const sliderTrack   = document.querySelector(".hero-slides");
 
-    let currentIndex   = 0;
-    let autoPlayTimer  = null;
-    const slideDuration = 8000;
+    // Progress bar (mobile)
+    const progressBar   = document.querySelector(".hero-progress__bar");
 
-    let startX = 0;
-    let endX   = 0;
+    // Menu mobile
+    const burger        = document.querySelector(".burger");
+    const mobileMenu    = document.getElementById("mobile-menu");
+    const menuClose     = document.querySelector(".mobile-menu__close");
+    const overlay       = document.querySelector(".mobile-overlay");
 
 
-    /* ===============================
-       GO TO SLIDE (DIRECTIONAL)
-    =============================== */
+    /* ═══════════════════════════════════════════════
+       2. ÉTAT DU SLIDER
+    ═══════════════════════════════════════════════ */
 
-    function goToSlide(index, direction = "right") {
+    let currentIndex      = 0;
+    let autoPlayTimer     = null;
+    const SLIDE_DELAY     = 7000; // ms
 
-        if (index === currentIndex) return;
+    let isDragging        = false;
+    let touchStartX       = 0;
+    let touchEndX         = 0;
+    const SWIPE_THRESHOLD = 45; // px
 
-        const currentSlide = slides[currentIndex];
-        const nextSlide    = slides[index];
 
-        // Retire le slide actuel
-        currentSlide.classList.remove("active");
+    /* ═══════════════════════════════════════════════
+       3. PROGRESS BAR MOBILE
+    ═══════════════════════════════════════════════ */
 
-        if (direction === "right") {
-            currentSlide.classList.add("exit-left");
-        } else {
-            // On prépare la slide suivante à entrer par la gauche
-            nextSlide.classList.add("enter-left");
-        }
+    /**
+     * Démarre l'animation de la barre de progression.
+     * On synchronise sa durée avec SLIDE_DELAY via une custom property CSS.
+     */
+    function startProgress() {
+        if (!progressBar) return;
 
-        // Force reflow pour relancer les transitions CSS proprement
-        void nextSlide.offsetWidth;
+        // Réinitialise proprement
+        progressBar.classList.remove("animating");
+        progressBar.style.setProperty("--slide-delay", `${SLIDE_DELAY}ms`);
 
-        nextSlide.classList.add("active");
+        // Forcer un reflow pour redémarrer l'animation
+        void progressBar.offsetWidth;
 
-        // Mise à jour des dots
-        dots[currentIndex].classList.remove("active");
-        dots[currentIndex].setAttribute("aria-selected", "false");
-        dots[index].classList.add("active");
-        dots[index].setAttribute("aria-selected", "true");
-
-        // Nettoyage des classes temporaires après la transition
-        setTimeout(() => {
-            currentSlide.classList.remove("exit-left");
-            nextSlide.classList.remove("enter-left");
-        }, 800);
-
-        currentIndex = index;
-        restartAutoPlay();
+        progressBar.classList.add("animating");
     }
 
+    function stopProgress() {
+        if (!progressBar) return;
+        progressBar.classList.remove("animating");
+    }
+
+
+    /* ═══════════════════════════════════════════════
+       4. LOGIQUE DU SLIDER
+    ═══════════════════════════════════════════════ */
+
+    /**
+     * Navigue vers une slide donnée.
+     * @param {number} targetIndex  - Index de la slide cible
+     * @param {"right"|"left"} dir  - Direction de la transition
+     */
+    function goToSlide(targetIndex, dir = "right") {
+        if (targetIndex === currentIndex) return;
+
+        const current = slides[currentIndex];
+        const target  = slides[targetIndex];
+
+        // --- Sortie de la slide actuelle ---
+        current.classList.remove("active");
+        current.classList.add(dir === "right" ? "exit-left" : "exit-right");
+
+        // --- Prépare la slide entrante depuis la gauche ---
+        if (dir === "left") {
+            target.classList.add("enter-left");
+            void target.offsetWidth;
+        }
+
+        // --- Activation ---
+        target.classList.add("active");
+
+        // --- Mise à jour des dots ---
+        dots[currentIndex].classList.remove("active");
+        dots[currentIndex].setAttribute("aria-selected", "false");
+        dots[targetIndex].classList.add("active");
+        dots[targetIndex].setAttribute("aria-selected", "true");
+
+        // --- Nettoyage après transition ---
+        const TRANSITION_DURATION = 800;
+
+        setTimeout(() => {
+            current.classList.remove("exit-left", "exit-right");
+            target.classList.remove("enter-left");
+        }, TRANSITION_DURATION);
+
+        currentIndex = targetIndex;
+
+        restartAutoPlay();
+        startProgress();
+    }
+
+    /** Slide suivante (boucle) */
     function nextSlide() {
-        let next = currentIndex + 1;
-        if (next >= slides.length) next = 0;
+        const next = (currentIndex + 1) % slides.length;
         goToSlide(next, "right");
     }
 
+    /** Slide précédente (boucle) */
     function prevSlide() {
-        let prev = currentIndex - 1;
-        if (prev < 0) prev = slides.length - 1;
+        const prev = (currentIndex - 1 + slides.length) % slides.length;
         goToSlide(prev, "left");
     }
 
 
-    /* ===============================
-       AUTOPLAY
-    =============================== */
+    /* ═══════════════════════════════════════════════
+       5. AUTOPLAY
+    ═══════════════════════════════════════════════ */
 
     function startAutoPlay() {
-        autoPlayTimer = setTimeout(() => {
-            nextSlide();
-        }, slideDuration);
+        clearTimeout(autoPlayTimer);
+        autoPlayTimer = setTimeout(nextSlide, SLIDE_DELAY);
+    }
+
+    function stopAutoPlay() {
+        clearTimeout(autoPlayTimer);
+        autoPlayTimer = null;
     }
 
     function restartAutoPlay() {
-        clearTimeout(autoPlayTimer);
+        stopAutoPlay();
         startAutoPlay();
     }
 
+    // Pause au hover (desktop)
+    sliderTrack?.addEventListener("mouseenter", () => {
+        stopAutoPlay();
+        stopProgress();
+    });
 
-    /* ===============================
-       DOT EVENTS
-    =============================== */
+    sliderTrack?.addEventListener("mouseleave", () => {
+        startAutoPlay();
+        startProgress();
+    });
 
-    dots.forEach(dot => {
+
+    /* ═══════════════════════════════════════════════
+       6. DOTS
+    ═══════════════════════════════════════════════ */
+
+    dots.forEach((dot) => {
         dot.addEventListener("click", () => {
-            const index = parseInt(dot.dataset.slide);
-            const direction = index > currentIndex ? "right" : "left";
-            goToSlide(index, direction);
+            const targetIndex = parseInt(dot.dataset.slide, 10);
+            if (targetIndex === currentIndex) return;
+
+            const dir = targetIndex > currentIndex ? "right" : "left";
+            goToSlide(targetIndex, dir);
         });
     });
 
 
-    /* ===============================
-       SWIPE MOBILE
-    =============================== */
+    /* ═══════════════════════════════════════════════
+       7. SWIPE TACTILE (mobile)
+    ═══════════════════════════════════════════════ */
 
-    slider.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
-    }, { passive: true });
+    sliderTrack?.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+        isDragging  = true;
 
-    slider.addEventListener("touchend", (e) => {
-        endX = e.changedTouches[0].clientX;
-        handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-        const diff = startX - endX;
-        if (Math.abs(diff) < 50) return;
-        if (diff > 0) {
-            nextSlide();
-        } else {
-            prevSlide();
+        // Pause la progress bar pendant le swipe
+        if (progressBar) {
+            progressBar.style.animationPlayState = "paused";
         }
+    }, { passive: true });
+
+    sliderTrack?.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        touchEndX = e.changedTouches[0].clientX;
+    }, { passive: true });
+
+    sliderTrack?.addEventListener("touchend", () => {
+        if (!isDragging) return;
+        isDragging = false;
+
+        if (progressBar) {
+            progressBar.style.animationPlayState = "";
+        }
+
+        const delta = touchStartX - touchEndX;
+        if (Math.abs(delta) < SWIPE_THRESHOLD) return;
+
+        delta > 0 ? nextSlide() : prevSlide();
+    });
+
+
+    /* ═══════════════════════════════════════════════
+       8. NAVIGATION CLAVIER
+    ═══════════════════════════════════════════════ */
+
+    document.addEventListener("keydown", (e) => {
+        if (mobileMenu?.classList.contains("open")) return;
+
+        if (e.key === "ArrowRight") { nextSlide(); }
+        if (e.key === "ArrowLeft")  { prevSlide(); }
+    });
+
+
+    /* ═══════════════════════════════════════════════
+       9. MENU MOBILE — SLIDER LATÉRAL
+    ═══════════════════════════════════════════════ */
+
+    function openMenu() {
+        mobileMenu?.classList.add("open");
+        burger?.classList.add("open");
+        overlay?.classList.add("open");
+
+        burger?.setAttribute("aria-expanded", "true");
+        mobileMenu?.setAttribute("aria-hidden", "false");
+
+        document.body.style.overflow = "hidden";
+
+        setTimeout(() => menuClose?.focus(), 50);
+
+        stopAutoPlay();
+        stopProgress();
     }
 
+    function closeMenu() {
+        mobileMenu?.classList.remove("open");
+        burger?.classList.remove("open");
+        overlay?.classList.remove("open");
 
-    /* ===============================
-       BURGER MENU
-    =============================== */
+        burger?.setAttribute("aria-expanded", "false");
+        mobileMenu?.setAttribute("aria-hidden", "true");
 
-    if (burger && mobileMenu) {
-        burger.addEventListener("click", () => {
-            const isOpen = mobileMenu.classList.toggle("open");
-            burger.classList.toggle("open", isOpen);
-            burger.setAttribute("aria-expanded", String(isOpen));
-        });
+        document.body.style.overflow = "";
 
-        // Ferme le menu au clic sur un lien
-        mobileMenu.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                mobileMenu.classList.remove("open");
-                burger.classList.remove("open");
-                burger.setAttribute("aria-expanded", "false");
-            });
-        });
+        burger?.focus();
 
-        // Ferme le menu au clic à l'extérieur
-        document.addEventListener("click", (e) => {
-            if (!burger.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.remove("open");
-                burger.classList.remove("open");
-                burger.setAttribute("aria-expanded", "false");
+        startAutoPlay();
+        startProgress();
+    }
+
+    burger?.addEventListener("click", () => {
+        const isOpen = mobileMenu?.classList.contains("open");
+        isOpen ? closeMenu() : openMenu();
+    });
+
+    menuClose?.addEventListener("click", closeMenu);
+    overlay?.addEventListener("click", closeMenu);
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileMenu?.classList.contains("open")) {
+            closeMenu();
+        }
+    });
+
+    mobileMenu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+    });
+
+    /**
+     * Focus trap dans le menu mobile ouvert.
+     */
+    mobileMenu?.addEventListener("keydown", (e) => {
+        if (e.key !== "Tab" || !mobileMenu.classList.contains("open")) return;
+
+        const focusables = Array.from(
+            mobileMenu.querySelectorAll(
+                'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
+            )
+        ).filter((el) => !el.disabled && el.offsetParent !== null);
+
+        if (focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last  = focusables[focusables.length - 1];
+
+        if (e.shiftKey) {
+            if (document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
             }
-        });
-    }
+        } else {
+            if (document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    });
 
 
-    /* ===============================
-       START
-    =============================== */
+    /* ═══════════════════════════════════════════════
+       10. INITIALISATION
+    ═══════════════════════════════════════════════ */
 
     startAutoPlay();
+    startProgress();
 
 });
