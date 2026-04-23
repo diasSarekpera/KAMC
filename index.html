@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="KAMC – Vente d'équipement sportif premium conçu pour la performance.">
-        <title>KAMC – Équipement Sportif Premium</title>
+        <meta name="description" content="KAMC - Vente d'équipement sportif premium conçu pour la performance.">
+        <title>KAMC - Équipement Sportif Premium</title>
 
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -293,13 +293,107 @@
             </div>
 
             <!-- ─────────────────────────────────
-                 PROGRESS BAR (mobile autoplay indicator)
+                PROGRESS BAR (mobile autoplay indicator)
             ───────────────────────────────── -->
             <div class="hero-progress" aria-hidden="true">
                 <div class="hero-progress__bar"></div>
             </div>
 
         </section><!-- /hero -->
+
+        <!-- ═══════════════════════════════════════
+            CATEGORIES SECTION
+            Section présentant les grandes catégories de sports
+        ═══════════════════════════════════════ -->
+        <section class="categories-section" aria-labelledby="categories-title">
+            
+            <!-- En-tête de section -->
+            <header class="section-header categories-header">
+                <p class="section-eyebrow">Shop by category</p>
+                <h2 id="categories-title" class="section-title">Explore top sports</h2>
+            </header>
+
+            <!-- Grille des cartes catégories -->
+            <div class="categories-grid">
+                
+                <!-- Carte Catégorie : Football -->
+                <article class="category-card">
+                    <a href="#" class="category-card__link" aria-label="Voir la catégorie Football">
+                        
+                        <figure class="category-card__media">
+                            <img src="/assets/images/football.png" alt="Ballon de football sur un terrain de stade">
+                        </figure>
+
+                        <div class="category-card__footer">
+                            <div class="category-card__info">
+                                <i class="fa-solid fa-futbol category-card__icon" aria-hidden="true"></i>
+                                <h3 class="category-card__title">Football</h3>
+                            </div>
+                            <i class="fa-solid fa-arrow-right category-card__arrow" aria-hidden="true"></i>
+                        </div>
+
+                    </a>
+                </article>
+
+                <!-- Carte Catégorie : Basketball -->
+                <article class="category-card">
+                    <a href="#" class="category-card__link" aria-label="Voir la catégorie Basketball">
+                        
+                        <figure class="category-card__media">
+                            <img src="/assets/images/basket.png" alt="Ballon de basketball sur un parquet avec panier en arrière-plan">
+                        </figure>
+
+                        <div class="category-card__footer">
+                            <div class="category-card__info">
+                                <i class="fa-solid fa-basketball category-card__icon" aria-hidden="true"></i>
+                                <h3 class="category-card__title">Basketball</h3>
+                            </div>
+                            <i class="fa-solid fa-arrow-right category-card__arrow" aria-hidden="true"></i>
+                        </div>
+
+                    </a>
+                </article>
+
+                <!-- Carte Catégorie : Fitness -->
+                <article class="category-card">
+                    <a href="#" class="category-card__link" aria-label="Voir la catégorie Fitness">
+                        
+                        <figure class="category-card__media">
+                            <img src="/assets/images/fitness.png" alt="Haltères et kettlebell dans une salle de sport">
+                        </figure>
+
+                        <div class="category-card__footer">
+                            <div class="category-card__info">
+                                <i class="fa-solid fa-dumbbell category-card__icon" aria-hidden="true"></i>
+                                <h3 class="category-card__title">Fitness</h3>
+                            </div>
+                            <i class="fa-solid fa-arrow-right category-card__arrow" aria-hidden="true"></i>
+                        </div>
+
+                    </a>
+                </article>
+
+                <!-- Carte Catégorie : Running -->
+                <article class="category-card">
+                    <a href="#" class="category-card__link" aria-label="Voir la catégorie Running">
+                        
+                        <figure class="category-card__media">
+                            <img src="/assets/images/running.png" alt="Coureur sur une route en bord de falaise au lever du soleil">
+                        </figure>
+
+                        <div class="category-card__footer">
+                            <div class="category-card__info">
+                                <i class="fa-solid fa-shoe-prints category-card__icon" aria-hidden="true"></i>
+                                <h3 class="category-card__title">Running</h3>
+                            </div>
+                            <i class="fa-solid fa-arrow-right category-card__arrow" aria-hidden="true"></i>
+                        </div>
+
+                    </a>
+                </article>
+
+            </div>
+        </section>
 
         <!-- JavaScript -->
         <script src="./js/02-home/hero/hero-slider.js"></script>

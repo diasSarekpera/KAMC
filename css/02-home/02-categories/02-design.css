@@ -1,0 +1,221 @@
+/* ═══════════════════════════════════════════════
+   01 - CATEGORIES SECTION (LAYOUT ONLY)
+   Structure : Header + grid de cartes catégories
+   Tech : Flexbox uniquement
+═══════════════════════════════════════════════ */
+
+/* ===== Section Container ===== */
+.categories-section {
+  margin: 0 auto;
+  padding: 7rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ===== Header ===== */
+.categories-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+/* ===== Grid (2 colonnes) ===== */
+.categories-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+/* Chaque carte prend 50% - gap (layout responsive facile) */
+.category-card {
+  flex: 1 1 520px;
+  max-width: 560px;
+  display: flex;
+}
+
+/* ===== Card Link Wrapper ===== */
+.category-card__link {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Image / Media ===== */
+.category-card__media {
+  width: 100%;
+  display: flex;
+}
+
+.category-card__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ===== Footer Layout ===== */
+.category-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  gap: 20px;
+}
+
+/* Left block : icon + title */
+.category-card__info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Icon wrapper */
+.category-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(201, 167, 77, 0.55);
+  background: rgba(201, 167, 77, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px; /* taille icône FA */
+  color: #c9a74d;  /* couleur icône FA */
+}
+
+/* Title layout */
+.category-card__title {
+  margin: 0;
+}
+
+/* Arrow wrapper */
+.category-card__arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(15, 29, 53, 0.06);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #0f1d35;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.category-card__link:hover .category-card__arrow {
+  background: rgba(201, 167, 77, 0.18);
+  transform: translateX(4px);
+}
+
+/* ═══════════════════════════════════════════════
+   02 - CATEGORIES SECTION (DESIGN)
+   Design esthétique moderne, propre, premium
+═══════════════════════════════════════════════ */
+
+/* ===== Section Background ===== */
+.categories-section {
+  background: #f4f7fb;
+}
+
+/* ===== Header Typo ===== */
+.categories-header .section-eyebrow {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #c9a74d;
+  margin: 0;
+}
+
+.categories-header .section-title {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: #0f1d35;
+  margin: 0;
+  line-height: 1.05;
+}
+
+/* ===== Card Base Style ===== */
+.category-card__link {
+  text-decoration: none;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0px 10px 25px rgba(15, 29, 53, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.category-card__link:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 16px 35px rgba(15, 29, 53, 0.18);
+}
+
+/* ===== Media ===== */
+.category-card__media {
+  height: 230px;
+  overflow: hidden;
+}
+
+.category-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 0.35s ease;
+}
+
+.category-card__link:hover .category-card__media img {
+  transform: scale(1.08);
+}
+
+/* ===== Footer ===== */
+.category-card__footer {
+  background: #f9fbfd;
+  border-top: 1px solid rgba(15, 29, 53, 0.08);
+}
+
+/* ===== Title ===== */
+.category-card__title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #0f1d35;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .categories-header .section-title {
+    font-size: 46px;
+  }
+
+  .category-card__media {
+    height: 210px;
+  }
+}
+
+@media (max-width: 600px) {
+  .categories-section {
+    padding: 60px 18px;
+  }
+
+  .categories-header .section-title {
+    font-size: 38px;
+  }
+
+  .category-card__media {
+    height: 190px;
+  }
+
+  .category-card__footer {
+    padding: 16px 18px;
+  }
+}
+
+
